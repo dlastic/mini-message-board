@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Message Board</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='styles.css') }}"
-    />
-  </head>
-  <body>
-    <h1>Welcome to the Message Board!</h1>
-    <ul>
-      {% for message in messages %}
+{% extends "layout.html" %}
+{% block content %}
+  <h1>Welcome to the Message Board!</h1>
+  <ul>
+    {% for message in messages %}
       <li>
         <strong>{{ message.user }}</strong>: {{ message.text }}
         <em>({{ message.added }})</em>
       </li>
-      {% endfor %}
-    </ul>
-  </body>
-</html>
+    {% endfor %}
+  </ul>
+  <a href="/new">Post a New Message</a>
+{% endblock content %}
