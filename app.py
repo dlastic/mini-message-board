@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from datetime import datetime
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
@@ -14,6 +15,13 @@ def index():
     return render_template("index.html", messages=messages)
 
 
-@app.route("/new")
+@app.route("/new", methods=["GET", "POST"])
 def new_message():
-    return render_template("new.html")
+    if request.method == "POST":
+        text = request.form["text"]
+        user = request.form["user"]
+        added = datetime.now().strftime("%Y-%m-%d")
+        messages.append({"text": text, "user": user, "added": added})
+        return redirect(url_for("index"))
+
+    return render_template("form.html")
