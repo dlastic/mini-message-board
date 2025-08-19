@@ -11,5 +11,13 @@
   </head>
   <body>
     <h1>Welcome to the Message Board!</h1>
+    <ul>
+      {% for message in messages %}
+      <li>
+        <strong>{{ message.user }}</strong>: {{ message.text }}
+        <em>({{ message.added }})</em>
+      </li>
+      {% endfor %}
+    </ul>
   </body>
 </html>
