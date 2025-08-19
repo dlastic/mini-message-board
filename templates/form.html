@@ -1,9 +1,12 @@
 {% extends "layout.html" %}
+
 {% block content %}
-  <h2>New Message</h2>
-  <form action="{{ url_for('new_message') }}" method="post">
-    <input type="text" name="user" placeholder="Your Name" required />
-    <textarea name="text" placeholder="Your Message" required></textarea>
-    <button type="submit">Post Message</button>
-  </form>
+  <div class="container">
+    <h2>New Message</h2>
+    <form action="{{ url_for('new_message') }}" method="post">
+      <input type="text" name="user" placeholder="Your Name" required />
+      <textarea name="text" placeholder="Your Message" required></textarea>
+      <button type="submit">Post Message</button>
+    </form>
+  </div>
 {% endblock %}

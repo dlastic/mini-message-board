@@ -1,14 +1,20 @@
 {% extends "layout.html" %}
+
 {% block content %}
-  <h1>Welcome to the Message Board!</h1>
-  <ul>
+  <div class="container">
+    <h1>Welcome to the Message Board!</h1>
     {% for message in messages %}
-      <li>
-        <strong>{{ message.user }}</strong>: {{ message.text }}
-        <em>({{ message.added }})</em>
-        <a href="{{ url_for('message_detail', message_id=loop.index0) }}">View</a>
-      </li>
+      <div class="card card-flex">
+        <div class="card-main">
+          <strong>{{ message.user }}</strong>
+          <p>{{ message.text }}</p>
+          <em>{{ message.added }}</em>
+        </div>
+        <div class="card-action">
+          <a href="{{ url_for('message_detail', message_id=loop.index0) }}">Open</a>
+        </div>
+      </div>
     {% endfor %}
-  </ul>
-  <a href="{{ url_for('new_message') }}">Post a New Message</a>
-{% endblock content %}
+    <a href="{{ url_for('new_message') }}">Post a New Message</a>
+  </div>
+{% endblock %}
