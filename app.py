@@ -25,3 +25,9 @@ def new_message():
         return redirect(url_for("index"))
 
     return render_template("form.html")
+
+
+@app.route("/messages/<int:message_id>")
+def message_detail(message_id):
+    message = messages[message_id]
+    return render_template("message.html", message=message)

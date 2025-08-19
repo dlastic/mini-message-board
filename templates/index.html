@@ -6,8 +6,9 @@
       <li>
         <strong>{{ message.user }}</strong>: {{ message.text }}
         <em>({{ message.added }})</em>
+        <a href="{{ url_for('message_detail', message_id=loop.index0) }}">View</a>
       </li>
     {% endfor %}
   </ul>
-  <a href="/new">Post a New Message</a>
+  <a href="{{ url_for('new_message') }}">Post a New Message</a>
 {% endblock content %}
