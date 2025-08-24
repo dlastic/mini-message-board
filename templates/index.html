@@ -6,12 +6,12 @@
     {% for message in messages %}
       <div class="card card-flex">
         <div class="card-main">
-          <strong>{{ message.user }}</strong>
+          <strong>{{ message.username }}</strong>
           <p>{{ message.text }}</p>
           <em>{{ message.added }}</em>
         </div>
         <div class="card-action">
-          <a href="{{ url_for('message_detail', message_id=loop.index0) }}">Open</a>
+          <a href="{{ url_for('message_detail', message_id=message.id) }}">Open</a>
         </div>
       </div>
     {% endfor %}
