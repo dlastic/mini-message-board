@@ -64,6 +64,7 @@ h2 {
   margin-left: 1rem;
   display: flex;
   align-items: center;
+  gap: 0.5rem;
 }
 
 .card:hover {

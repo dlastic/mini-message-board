@@ -42,3 +42,16 @@ def add_message(message_text, username, added):
             ),
             {"text": message_text, "username": username, "added": added},
         )
+
+
+def delete_message_from_db(message_id):
+    with engine.begin() as conn:
+        conn.execute(
+            text(
+                """
+                DELETE FROM messages
+                WHERE id = :id
+                """
+            ),
+            {"id": message_id},
+        )

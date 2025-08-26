@@ -12,6 +12,9 @@
         </div>
         <div class="card-action">
           <a href="{{ url_for('message_detail', message_id=message.id) }}">Open</a>
+          <form action="{{ url_for('delete_message', message_id=message.id) }}" method="POST">
+            <button type="submit">Delete</button>
+          </form>
         </div>
       </div>
     {% endfor %}
