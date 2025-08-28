@@ -1,6 +1,8 @@
 from datetime import datetime
 
 from flask import Flask, redirect, render_template, request, url_for
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
 from db.queries import (
     add_message,
@@ -10,6 +12,9 @@ from db.queries import (
 )
 
 app = Flask(__name__)
+limiter = Limiter(
+    key_func=get_remote_address, app=app, default_limits=["200 per day", "50 per hour"]
+)
 
 
 @app.route("/")
@@ -19,6 +24,7 @@ def index():
 
 
 @app.route("/new", methods=["GET", "POST"])
+@limiter.limit("10 per minute")
 def new_message():
     if request.method == "POST":
         text = request.form["text"]
